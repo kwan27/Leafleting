@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Leaflet Exercise</title>
+  <meta charset="utf-8" />
+
+  <!-- Leaflet styles and code. Place in the <head></head> element. -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+
+  <!-- jQuery is a library that simplifies many things in JavaScript.
+	     We'll use it to retrieve data from the web. -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+</head>
+
+<body>
+
+  <div id="mapid" style="width: 600px; height: 400px;"></div>
+  <!-- Our web map will get placed into this div element -->
+
+  <script>
+
+
+    // Make a Leaflet map with L.map().
+    // Store the map in the variable 'map'.
+    // "mapid" is the 'id' of the DOM element to contain the map.
+    var map = L.map('mapid', {
+        center: [49.265637, -123.256113],
+        zoom: 11
+      } // this object holds map options
+    );
+
+    var topoTiles = L.tileLayer(
+      'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
+        maxZoom: 17,
+        attribution: 'Basemap data: &copy; <a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a> | Basemap style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+      }
+    ).addTo(map);
+
+    L.control.scale().addTo(map);
+
+
+    var greenIcon = L.icon({
+      iconUrl: 'http://pluspng.com/img-png/university-png-of-a-university-building-university-building-drawing-400.png',
+      shadowUrl: 'https://pngimage.net/wp-content/uploads/2018/06/shadow.png-6.png',
+
+      iconSize: [78, 71], // size of the icon
+      shadowSize: [78, 71], // size of the shadow
+      iconAnchor: [0, 30], // point of the icon which will correspond to marker's location
+      shadowAnchor: [-45, 30], // the same for the shadow
+      popupAnchor: [20, 50] // point from which the popup should open relative to the iconAnchor
+
+    });
+    L.marker([49.263, -123.251], {
+      icon: greenIcon
+    }).addTo(map);
+
+    L.marker([49.263, -123.251]).addTo(map)
+      .bindPopup('The University of British Columbia Parking Lots')
+      .openPopup();
+
+
+
+
+
+
+
+    //function getColor(d) {
+    //    return d > 1000 ? '#800026' :
+    //           d > 500  ? '#BD0026' :
+    //           d > 200  ? '#E31A1C' :
+    //           d > 100  ? '#FC4E2A' :
+    //           d > 50   ? '#FD8D3C' :
+    //           d > 20   ? '#FEB24C' :
+    //           d > 10   ? '#FED976' :
+    //                      '#FFEDA0';
+    //}
+
+    //function style(feature) {
+    //    return {
+    //        fillColor: getColor(feature.properties.density),
+    //        weight: 2,
+    //        opacity: 1,
+    //        color: 'white',
+    //        dashArray: '3',
+    //        fillOpacity: 0.7
+    //    };
+    //}
+
+    //L.geoJson(statesData, {style: style}).addTo(map);
+
+
+    //										var videoUrls = [
+    //									         'https://www.mapbox.com/bites/00188/patricia_nasa.webm',
+    //									         'https://www.mapbox.com/bites/00188/patricia_nasa.mp4'
+    //									     ];
+
+    //									     var bounds = L.latLngBounds([[ 49.283, -123.268], [ 49.240, -123.224]]);
+    //
+    //									     var videoOverlay = L.videoOverlay( videoUrls, bounds, {
+    //									         opacity: 0.8
+    //									     }).addTo(map);
+
+
+
+
+    //var myPoint = L.marker(
+    //                 [49.265637, -123.256113]
+    //              ).addTo(map);
+
+    //var myPoly = L.polygon(
+    //        			[
+    //        				[49.2797,-123.2678],
+    //                [49.2770,-123.2690],
+    //            		[49.2791,-123.2723],
+    //                [49.2797,-123.2678],
+    //              ],
+    //  						{color: 'red', weight: 6}
+    //						 ).addTo(map);
+
+    // load GeoJSON from a file on the web
+    // $ is jQuery.
+
+    //	var myPoint = L.marker(
+    //	                     [49.265637, -123.256113]
+    //		                  ).addTo(map);
+
+    // p5.js draw
+    // p5.js draw
+
+    //L.geoJSON(ubcv_water_features).addTo(map);
+    var myPoly = L.polygon(
+      [
+        [49.283, -123.268],
+        [49.240, -123.268],
+        [49.240, -123.224],
+        [49.283, -123.224],
+      ], {
+        color: 'white',
+        weight: 1
+      }
+    ).addTo(map);
+
+        var myPoly = L.polygon(
+      [
+        [49.265913, -123.249445],
+        [49.266578, -123.245937],
+        [49.266228, -123.245647],
+        [49.265612, -123.249288],
+      ], {
+        color: 'red',
+        weight: 6
+      }
+    ).addTo(map);
+
+        L.marker([49.266109, -123.247493]).addTo(map)
+      .bindPopup('Bus Loop')
+      .openPopup();
+
+    var myPolyg = L.polygon(
+      [
+        [49.266181, -123.256628],
+        [49.266412, -123.256063],
+        [49.265757, -123.255538],
+        [49.265568, -123.256192],
+      ], {
+
+        color: 'red',
+        weight: 6
+      }
+    ).addTo(map);
+
+     L.marker([49.265971, -123.256158]).addTo(map)
+      .bindPopup('Geography Building')
+      .openPopup();
+
+    //L.geoJSON('ubcv_water_features').addTo(map);
+  var treeMarkerOptions = {
+      radius: 4,
+      fillColor: "#780000",
+      color: "#000",
+      weight: 1,
+      opacity: 0.6,
+      fillOpacity: 0.6
+    };
+
+    $.getJSON("https://raw.githubusercontent.com/UBCGeodata/ubcv-parking/master/geojson/ubcv_parking_www.geojson",
+      function(data) {
+        // Once UBC trees GeoJSON layer is loaded
+        // Then add it to the map
+        L.geoJSON(data, {
+          pointToLayer: function(feature, latlng) {
+            return L.circleMarker(
+              latlng,
+              treeMarkerOptions
+            );
+          }
+        }).addTo(map);
+      });
+
+
+    // $.getJSON("https://raw.githubusercontent.com/UBCGeodata/ubcv-landscape/master/geojson/ubcv_fields.geojson",
+    // function(data){
+    // Once UBC trees GeoJSON layer is loaded
+    // Then add it to the map
+    //  L.geoJSON(data, {
+    //					pointToLayer: function(feature, latlng) {
+    //						return L.circleMarker(
+    //							latlng,
+    //							treeMarkerOptions
+    //						);
+    //					}
+    //				}).addTo(map);
+    //			});
+    // var myStyle = {
+    // 	 "color": "#00ff00",
+    // 	 "weight": 5,
+    // 	 "opacity": 0.65
+    //  };
+  </script>
+
+</body>
+
+</html>
